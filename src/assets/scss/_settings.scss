@@ -46,8 +46,10 @@
 $global-width: rem-calc(1200);
 $global-font-size: 100%;
 $global-lineheight: 1.5;
-$primary-color: #2199e8;
-$secondary-color: #777;
+$primary-color: #02144F;
+$secondary-color: #ab0101;
+$tertiary-color: rgb(255, 214, 25);
+$quaternary-color: rgb(128, 188, 145);
 $success-color: #3adb76;
 $warning-color: #ffae00;
 $alert-color: #ec5840;
@@ -57,8 +59,8 @@ $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
 $body-background: $white;
-$body-font-color: $black;
-$body-font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+$body-font-color: $dark-gray;
+$body-font-family: 'Open Sans', "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 $text-direction: ltr;
 $global-margin: 1rem;
@@ -66,7 +68,7 @@ $global-padding: 1rem;
 $global-margin: 1rem;
 $global-weight-normal: normal;
 $global-weight-bold: bold;
-$global-radius: 0;
+$global-radius: rem-calc(40);
 $global-text-direction: ltr;
 $rem-base: 16px;
 
@@ -94,7 +96,7 @@ $block-grid-max: 6;
 // ------------------
 
 $header-font-family: $body-font-family;
-$header-font-weight: $global-weight-normal;
+$header-font-weight: 800;
 $header-font-style: normal;
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 $header-sizes: (
@@ -115,7 +117,7 @@ $header-sizes: (
     'h6': 16,
   ),
 );
-$header-color: inherit;
+$header-color: $primary-color;
 $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
 $header-text-rendering: optimizeLegibility;
@@ -417,9 +419,9 @@ $pagination-arrows: true;
 // ----------------
 
 $progress-height: 1rem;
-$progress-background: $medium-gray;
+$progress-background: $light-gray;
 $progress-margin-bottom: $global-margin;
-$progress-meter-background: $primary-color;
+$progress-meter-background: $quaternary-color;
 $progress-radius: $global-radius;
 
 // 27. Reveal
@@ -524,7 +526,7 @@ $tooltip-radius: $global-radius;
 // -----------
 
 $topbar-padding: 0.5rem;
-$topbar-background: #eee;
+$topbar-background: transparent;
 $topbar-link-color: #fff;
 $topbar-input-width: 200px;
 

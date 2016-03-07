@@ -1,0 +1,24 @@
+//////////////////
+// Buttons
+//////////////////
+
+.ghost-button {
+  background: transparent;
+  border: 3px solid $white;
+
+  &:hover {
+    background: $white;
+    color: $primary-color;
+  }
+}
+
+.button {
+  &.tertiary {
+    background-color: $tertiary-color;
+    color: $primary-color;
+  }
+
+  &.quaternary {
+    background-color: $quaternary-color;
+  }
+}

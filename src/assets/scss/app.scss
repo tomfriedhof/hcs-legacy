@@ -1,11 +1,14 @@
 @charset 'utf-8';
 
+@import 'components/fonts';
 @import 'settings';
 @import 'foundation';
 @import 'motion-ui';
+@import 'font-awesome';
 
 @include foundation-global-styles;
-@include foundation-grid;
+//@include foundation-grid;
+@include foundation-flex-grid;
 @include foundation-typography;
 @include foundation-button;
 @include foundation-forms;
@@ -41,3 +44,12 @@
 
 @include motion-ui-transitions;
 @include motion-ui-animations;
+
+@import 'components/mixins';
+@import 'components/buttons';
+@import 'components/nav-bar';
+@import 'components/wallpaper';
+@import 'components/sponsors';
+@import 'components/money-progress';
+@import 'components/extra-text';
+@import 'components/footer';

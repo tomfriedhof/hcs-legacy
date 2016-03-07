@@ -23,6 +23,7 @@ var PATHS = {
     '!src/assets/{!img,js,scss}/**/*'
   ],
   sass: [
+    'bower_components/fontawesome/scss',
     'bower_components/foundation-sites/scss',
     'bower_components/motion-ui/src/'
   ],
@@ -161,6 +162,16 @@ gulp.task('server', ['build'], function() {
   browser.init({
     server: 'dist', port: PORT
   });
+});
+
+gulp.task('deploy', ['preDeploy'], function() {
+  return gulp.src(['src', 'dist'], { read: false})
+    .pipe(clean());
+});
+
+gulp.task('preDeploy', ['build'], function() {
+  return gulp.src('dist/**/*')
+    .pipe(gulp.dest(''));
 });
 
 // Build the site, run the server, and watch for file changes

@@ -1,0 +1,106 @@
+///////////////////////////
+// Wallpaper
+///////////////////////////
+@keyframes crazyBorder {
+  0% {
+    background-color: rgba(255,255,255,0.1);
+    //border-color: rgba(255,255,255,0);
+    //border-width: 20px;
+  }
+  100% {
+    background-color: rgba(255,255,255,0.2);
+    //border-color: rgba(255,255,255,1);
+    //border-width: 0;
+  }
+}
+
+.wallpaper {
+  background-size: cover;
+  border-top: rem-calc(10) solid $secondary-color;
+  background-position: center;
+  text-align: center;
+  overflow: hidden;
+  padding: rem-calc(120 0 40 0);
+
+  @include breakpoint(large up) {
+    background-size: cover;
+    min-height: 85vh;
+    padding: 0;
+    position: relative;
+  }
+
+  h2, p {
+    color: $white;
+  }
+
+  h2 {
+    font-family:'3Dumb', $header-font-family;
+    font-weight: 800;
+    text-transform: uppercase;
+
+    @include breakpoint(large up) {
+      font-size: rem-calc(50);
+    }
+  }
+
+  h4 {
+    color: $quaternary-color;
+    font-family: 'chunkfiveroman';
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+
+  a {
+    //color: $white;
+    display: inline-block;
+    font-size: rem-calc(20);
+    font-weight: 700;
+    vertical-align: middle;
+
+    i {
+      display: inline-block;
+      font-size: rem-calc(25);
+      vertical-align: middle;
+      animation-duration: .2s;
+
+    }
+  }
+}
+
+.kids-background {
+  bottom: rem-calc(-220);
+  left: 10%;
+  position: absolute;
+  width: 80%;
+}
+
+.wallpaper--content {
+  @include breakpoint(large up) {
+    @include center();
+    padding-top: rem-calc(25);
+    width: 75%;
+  }
+  z-index: 2;
+
+  .donate-button {
+    padding: rem-calc(20);
+  }
+}
+
+.wallpaper--icon-row {
+
+  i {
+    color: $quaternary-color;
+    font-size: rem-calc(40);
+  }
+}
+
+.wallpaper--content--info {
+  margin-bottom: rem-calc(40);
+
+  > div:first-child {
+    @include breakpoint(large up) {
+      border-right: 1px solid $white;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+///////////////////////////////
+// Navigation bar
+///////////////////////////////
+
+.top-bar-title {
+  text-align: center;
+}
+
+.small-logo-text {
+  display: block;
+}
+
+.top-bar {
+  color: $quaternary-color;
+  font-weight: 400;
+  letter-spacing: rem-calc(10);
+  text-transform: uppercase;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+
+  @include breakpoint(medium up) {
+
+  }
+}
+
+.main-logo {
+  max-width: rem-calc(100);
+
+  @include breakpoint(medium up) {
+    min-width: rem-calc(150);
+  }
+
+  @include breakpoint(large up) {
+    min-width: rem-calc(200);
+  }
+}
+
+.top-bar-title {
+  //@include breakpoint(large up) {
+  //  padding-left: rem-calc(160);
+  //}
+}
+
+.top-bar-right {
+  top: rem-calc(20);
+  right: rem-calc(10);
+  position: absolute;
+
+  .button {
+    background-color: $tertiary-color;
+    border: 3px solid $tertiary-color;
+    color: $primary-color;
+    font-weight: bold;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $white;
+      background-color: transparent;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+//////////////////////////////
+// Sponsors
+//////////////////////////////
+
+.sponsor-bar {
+  position: relative;
+
+  h4 {
+    font-size: rem-calc(50);
+    font-weight: 800;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+
+    @include breakpoint(medium up) {
+      line-height: 1;
+      font-size: rem-calc(150);
+      letter-spacing: rem-calc(100);
+      position: absolute;
+      text-indent: rem-calc(100);
+
+
+      @include center();
+    }
+  }
+
+  h3 {
+    font-weight: 800;
+    text-transform: uppercase;
+
+    @include breakpoint(large up) {
+      top: 95%;
+      left: 0;
+      position: absolute;
+      transform: rotate(-90deg);
+      transform-origin: 0 0;
+    }
+  }
+}
+
+.sponsor-bar--sponsors {
+  text-align: center;
+  padding: rem-calc(0 0 20);
+  position: relative;
+
+  @include breakpoint(large up) {
+    padding: rem-calc(40 0);
+  }
+
+  > div {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: rem-calc(10 0);
+  }
+}
+
+.gold {
+  background-color: $tertiary-color;
+
+  h4 {
+    color: lighten($tertiary-color, 8%);
+  }
+
+  h3 {
+    color: lighten($tertiary-color, 15%);
+  }
+}
+
+.silver {
+  background-color: $white;
+
+  h4 {
+    color: lighten($light-gray, 6%);
+  }
+
+  h3 {
+    color: $light-gray;
+  }
+
+  img {
+    max-width: rem-calc(100);
+  }
+}
+
+.bronze {
+  background-color: $primary-color;
+
+  .sponsor-bar--sponsors > div {
+    padding: rem-calc(0 30);
+  }
+
+  h4 {
+    color: lighten($primary-color, 5%);
+  }
+
+  h3 {
+    color: lighten($primary-color, 15%);
+  }
+
+  img {
+    max-width: rem-calc(80);
+  }
+}
