@@ -6,6 +6,7 @@ var panini   = require('panini');
 var rimraf   = require('rimraf');
 var sequence = require('run-sequence');
 var sherpa   = require('style-sherpa');
+var clean    = require('gulp-clean');
 
 // Check for --production flag
 var isProduction = !!(argv.production);
