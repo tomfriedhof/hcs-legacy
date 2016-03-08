@@ -53,6 +53,7 @@
     background-color: $tertiary-color;
     border: 3px solid $tertiary-color;
     color: $primary-color;
+    letter-spacing: 0;
     font-weight: bold;
     transition: all 0.3s ease;
 
@@ -60,5 +61,13 @@
       color: $white;
       background-color: transparent;
     }
+  }
+}
+
+.reveal {
+  border-radius: rem-calc(20);
+
+  form {
+    //display: inline-block;
   }
 }

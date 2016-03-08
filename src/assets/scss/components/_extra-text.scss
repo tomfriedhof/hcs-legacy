@@ -9,8 +9,17 @@
     padding: rem-calc(50 0);
   }
 
-  h5 {
-    letter-spacing: rem-calc(10);
+  h6 {
     text-transform: uppercase;
+  }
+}
+
+.about-section--location {
+  border-bottom: 1px solid $quaternary-color;
+  padding: rem-calc(10 0 20);
+  margin-bottom: rem-calc(20);
+
+  h3 {
+    color: $tertiary-color;
   }
 }
