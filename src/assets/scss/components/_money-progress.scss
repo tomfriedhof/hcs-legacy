@@ -44,6 +44,7 @@ $therm-height: rem-calc(20);
   left: 25%;
   top: 45%;
   padding: 0;
+  width: rem-calc(220);
 
   @include breakpoint(large up) {
     top: 45%;
@@ -52,6 +53,7 @@ $therm-height: rem-calc(20);
   &:before {
     content: "|";
     color: $primary-color;
+    display: block;
   }
 
   &.goal-description {
@@ -61,13 +63,20 @@ $therm-height: rem-calc(20);
   p {
     font-size: rem-calc(12);
   }
+
+  img {
+    display: inline-block;
+    max-width: rem-calc(50);
+    left: -60px;
+    position: absolute;
+  }
 }
 
 .goal-2 {
   left: 80%;
 
   &:before {
-    text-align: right;
+    //text-align: right;
   }
 }
 

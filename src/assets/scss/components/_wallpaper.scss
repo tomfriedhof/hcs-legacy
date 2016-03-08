@@ -1,16 +1,18 @@
 ///////////////////////////
 // Wallpaper
 ///////////////////////////
-@keyframes crazyBorder {
+@keyframes hopHop {
   0% {
-    background-color: rgba(255,255,255,0.1);
-    //border-color: rgba(255,255,255,0);
-    //border-width: 20px;
+    top: -3px;
+  }
+  40% {
+    top: 3px;
+  }
+  80% {
+    top: -1px;
   }
   100% {
-    background-color: rgba(255,255,255,0.2);
-    //border-color: rgba(255,255,255,1);
-    //border-width: 0;
+    top: 0;
   }
 }
 
@@ -20,6 +22,7 @@
   background-position: center;
   text-align: center;
   overflow: hidden;
+  position: relative;
   padding: rem-calc(120 0 40 0);
 
   @include breakpoint(large up) {
@@ -56,6 +59,10 @@
     font-size: rem-calc(20);
     font-weight: 700;
     vertical-align: middle;
+    //animation-name: hopHop;
+    //animation-iteration-count: 3;
+    //animation-duration: 1s;
+    //position: relative;
 
     i {
       display: inline-block;
@@ -68,10 +75,14 @@
 }
 
 .kids-background {
-  bottom: rem-calc(-220);
+  bottom: rem-calc(-180);
   left: 10%;
   position: absolute;
   width: 80%;
+
+  @include breakpoint(large up) {
+    bottom: -30%;
+  }
 }
 
 .wallpaper--content {
