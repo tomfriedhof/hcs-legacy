@@ -76,8 +76,12 @@ app.post('/:plan', function(req, res) {
   }
 });
 
-app.get('/.well-known/acme-challenge/' + process.env.LETSENCRYPT_PUBLIC_PROOF, function (req, res) {
-  res.end(process.env.LETSENCRYPT_PROOF);
+app.get('/.well-known/acme-challenge/' + process.env.LETSENCRYPT_PUBLIC_PROOF_1, function (req, res) {
+  res.end(process.env.LETSENCRYPT_PROOF_1);
+});
+
+app.get('/.well-known/acme-challenge/' + process.env.LETSENCRYPT_PUBLIC_PROOF_2, function (req, res) {
+  res.end(process.env.LETSENCRYPT_PROOF_2);
 });
 
 app.use(express.static(__dirname + '/dist'));
