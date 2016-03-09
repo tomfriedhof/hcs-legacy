@@ -5,12 +5,31 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp",
-    "build": "gulp build --production"
+    "build": "gulp build --production",
+    "postinstall": "bower install"
   },
   "author": "ZURB <foundation@zurb.com>",
   "license": "MIT",
-  "devDependencies": {
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zurb/foundation-zurb-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zurb/foundation-sites/issues",
+    "email": "foundation@zurb.com"
+  },
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "^2.2.41",
+    "bluebird": "^3.3.4",
+    "body-parser": "^1.15.0",
+    "bower": "^1.7.7",
     "browser-sync": "^2.10.0",
+    "confidence": "^1.4.2",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "express-validator": "^2.19.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.2.0",
     "gulp-clean": "^0.3.1",
@@ -26,9 +45,11 @@
     "gulp-uglify": "^1.2.0",
     "gulp-uncss": "^1.0.1",
     "http": "0.0.0",
+    "jade": "^1.11.0",
     "panini": "^1.0.0",
     "rimraf": "^2.4.3",
     "run-sequence": "^1.1.0",
+    "stripe": "^4.4.0",
     "style-sherpa": "^1.0.0",
     "yargs": "^3.8.0"
   },

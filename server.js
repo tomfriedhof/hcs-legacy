@@ -13,7 +13,7 @@ app.set('view engine', 'jade');
 
 app.use(bodyParser());
 //app.use(expressValidator([])); // this line must be immediately after express.bodyParser()!
-app.use(express.static(__dirname + '/dist'));
+//app.use(express.static(__dirname + '/dist'));
 
 // Form submission
 var pricing = {
@@ -89,6 +89,18 @@ app.post('/:plan', function(req, res) {
   }
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.get('/.well-known/acme-challenge/' + process.env.LETSENCRYPT_PUBLIC_PROOF_1, function (req, res) {
+  res.end(process.env.LETSENCRYPT_PROOF_1);
+});
+
+app.get('/.well-known/acme-challenge/' + process.env.LETSENCRYPT_PUBLIC_PROOF_2, function (req, res) {
+  res.end(process.env.LETSENCRYPT_PROOF_2);
+});
+
+app.use(express.static(__dirname + '/dist'));
+
+var port = process.env.PORT || 3000;
+
+app.listen(port, function () {
+  console.log('Example app listening on port ' + port + '!');
 });
