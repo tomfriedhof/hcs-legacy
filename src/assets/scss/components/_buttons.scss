@@ -28,6 +28,8 @@
 
   .stripe-button-el {
     @extend .button;
+    @extend .expand;
+    width: 100%;
 
     span {
       background: none;

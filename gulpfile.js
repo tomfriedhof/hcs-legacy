@@ -7,6 +7,7 @@ var rimraf   = require('rimraf');
 var sequence = require('run-sequence');
 var sherpa   = require('style-sherpa');
 var clean    = require('gulp-clean');
+var nodemon  = require('gulp-nodemon');
 
 // Check for --production flag
 var isProduction = !!(argv.production);
@@ -164,6 +165,28 @@ gulp.task('server', ['build'], function() {
     server: 'dist', port: PORT
   });
 });
+
+gulp.task('start', ['build'], function() {
+  nodemon({
+    script: 'server.js',
+    ext: 'js html scss',
+    env: { 'NODE_ENV': 'development' },
+    ignore: ['dist/*'],
+    tasks: ['build']
+  }).on('restart', function() {
+    console.log('restarted!');
+  });
+});
+
+//gulp.task('node', ['start'], function() {
+//  gulp.watch(PATHS.assets, ['copy', nodemon.restart]);
+//  gulp.watch(['src/pages/**/*.html'], ['pages', nodemon.restart]);
+//  gulp.watch(['src/{layouts,partials}/**/*.html'], ['pages:reset', nodemon.restart]);
+//  gulp.watch(['src/assets/scss/**/*.scss'], ['sass', nodemon.restart]);
+//  gulp.watch(['src/assets/js/**/*.js'], ['javascript', nodemon.restart]);
+//  gulp.watch(['src/assets/img/**/*'], ['images', nodemon.restart]);
+//  gulp.watch(['src/styleguide/**'], ['styleguide', nodemon.restart]);
+//});
 
 gulp.task('deploy', ['preDeploy'], function() {
   return gulp.src(['src', 'dist'], { read: false})

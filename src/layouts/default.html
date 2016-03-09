@@ -9,6 +9,7 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{{root}}assets/css/app.css">
   </head>
+  </head>
   <body>
     <div class="top-bar">
       <div class="top-bar-title">
@@ -53,85 +54,7 @@
         </div>
       </div>
     </div>
-    <div class="reveal large" id="paymentModal" data-reveal>
-      <h4>Select your donation option</h4>
-      <p class="lead">Click one of the buttons below to sponsor us.</p>
-      <div class="row align-center">
-        <div class="small-12 medium-6 large-4 columns">
-          <form action="/charge" method="POST">
-            <script
-              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
-              data-image="/img/documentation/checkout/marketplace.png"
-              data-name="HCS Legacy Project"
-              data-description="Gold Sponsorship"
-              data-amount="150000"
-              data-label="Gold Sponsorship ($1500)"
-              data-locale="auto">
-            </script>
-          </form>
-        </div>
-        <div class="small-12 medium-6 large-4 columns">
-          <form action="/charge" method="POST">
-            <script
-              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
-              data-image="/img/documentation/checkout/marketplace.png"
-              data-name="HCS Legacy Project"
-              data-description="Silver Sponsorship"
-              data-amount="75000"
-              data-label="Silver Sponsorship ($750)"
-              data-locale="auto">
-            </script>
-          </form>
-        </div>
-        <div class="small-12 medium-6 large-4 columns">
-          <form action="/charge" method="POST">
-            <script
-              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
-              data-image="/img/documentation/checkout/marketplace.png"
-              data-name="HCS Legacy Project"
-              data-description="Bronze Sponsorship"
-              data-amount="35000"
-              data-label="Bronze Sponsorship ($350)"
-              data-locale="auto">
-            </script>
-          </form>
-        </div>
-        <div class="small-12 medium-6 large-4 columns">
-          <form action="/charge" method="POST">
-            <script
-              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
-              data-image="/img/documentation/checkout/marketplace.png"
-              data-name="HCS Legacy Project"
-              data-description="Business Booth"
-              data-amount="15000"
-              data-label="Business Booth ($150)"
-              data-locale="auto">
-            </script>
-          </form>
-        </div>
-        <div class="small-12 medium-6 large-4 columns">
-          <form action="/charge" method="POST">
-            <script
-              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
-              data-image="/img/documentation/checkout/marketplace.png"
-              data-name="HCS Legacy Project"
-              data-description="Personal Booth"
-              data-amount="2500"
-              data-label="Personal Booth ($25)"
-              data-locale="auto">
-            </script>
-          </form>
-        </div>
-      </div>
-      <button class="close-button" data-close aria-label="Close modal" type="button">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+    {{> modal-form }}
     <script src="{{root}}assets/js/app.js"></script>
   </body>
 </html>

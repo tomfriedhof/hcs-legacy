@@ -1,0 +1,229 @@
+<div class="reveal" id="paymentModal" data-reveal>
+  <h4>Fill out the form below</h4>
+  <p class="lead">Use the dropdown to select the appropriate sponsorship level. Clicking the button at the bottom will pop-up a screen to enter credit card information.</p>
+  <div class="row align-center">
+    <div class="small-12 medium-12 columns">
+      <form data-abide novalidate class="jotform-form" action="/form/submit" method="post" name="contactform" id="contact-form" accept-charset="utf-8">
+        <div data-abide-error class="alert callout" style="display: none;">
+          <p><i class="fi-alert"></i> There are some errors in your form.</p>
+        </div>
+        <div class="form-all">
+          <ul class="form-section page-section">
+            <li>
+              <select required name="form[sponsorship]" class="sponsorship-select">
+                <option value="">Select Sponsorship Level</option>
+                <option value="gold">Gold Sponsorship ($1500)</option>
+                <option value="silver">Silver Sponsorship ($750)</option>
+                <option value="bronze">Bronze Sponsorship ($350)</option>
+                <option value="business">Business booth ($150)</option>
+                <option value="personal">Personal booth ($25)</option>
+              </select>
+            </li>
+            <li class="form-line">
+              <label class="form-label">
+                Contact Person<strong>*</strong>
+                <div id="cid_1" class="row form-name form-input-wide jf-required">
+                  <span class="form-sub-label-container small-12 medium-6 columns" style="vertical-align: top">
+                    <input required class="form-textbox" type="text" size="10" name="form[contact][first]" id="first_1" />
+                    <label class="form-sub-label" for="first_1" id="sublabel_first" style="min-height: 13px;"> First Name </label>
+                  </span>
+                  <span class="form-sub-label-container small-12 medium-6 columns" style="vertical-align: top">
+                    <input required class="form-textbox" type="text" size="15" name="form[contact][last]" id="last_1" />
+                    <label class="form-sub-label" for="last_1" id="sublabel_last" style="min-height: 13px;"> Last Name </label>
+                  </span>
+                </div>
+                <span class="form-error">First and Last required.</span>
+              </label>
+            </li>
+            <li class="form-line">
+              <label class="form-label form-label-top" id="label_3" for="input_3"> Business/Agency/Organization </label>
+              <div id="cid_3" class="form-input-wide jf-required">
+                <input type="text" class=" form-textbox" data-type="input-textbox" id="input_3" name="form[organization]" size="39" value="" />
+              </div>
+            </li>
+            <li class="form-line">
+              <label class="form-label form-label-top" id="label_4" for="input_4"> Address </label>
+              <div id="cid_4" class="form-input-wide jf-required">
+                <table summary="" undefined class="form-address-table" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td colspan="2">
+                    <span class="form-sub-label-container" style="vertical-align: top">
+                      <input class="form-textbox form-address-line" type="text" name="form[address][addr_line1]" id="input_4_addr_line1" />
+                      <label class="form-sub-label" for="input_4_addr_line1" id="sublabel_4_addr_line1" style="min-height: 13px;"> Street Address </label>
+                    </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                    <span class="form-sub-label-container" style="vertical-align: top">
+                      <input class="form-textbox form-address-line" type="text" name="form[address][addr_line2]" id="input_4_addr_line2" size="46" />
+                      <label class="form-sub-label" for="input_4_addr_line2" id="sublabel_4_addr_line2" style="min-height: 13px;"> Street Address Line 2 </label>
+                    </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="50%">
+                    <span class="form-sub-label-container" style="vertical-align: top">
+                      <input class="form-textbox form-address-city" type="text" name="form[address][city]" id="input_4_city" size="21" />
+                      <label class="form-sub-label" for="input_4_city" id="sublabel_4_city" style="min-height: 13px;"> City </label>
+                    </span>
+                    </td>
+                    <td>
+                    <span class="form-sub-label-container" style="vertical-align: top">
+                      <input class="form-textbox form-address-state" type="text" name="form[address][state]" id="input_4_state" size="22" />
+                      <label class="form-sub-label" for="input_4_state" id="sublabel_4_state" style="min-height: 13px;"> State / Province </label>
+                    </span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="50%">
+                    <span class="form-sub-label-container" style="vertical-align: top">
+                      <input class="form-textbox form-address-postal" type="text" name="form[address][postal]" id="input_4_postal" size="10" />
+                      <label class="form-sub-label" for="input_4_postal" id="sublabel_4_postal" style="min-height: 13px;"> Postal / Zip Code </label>
+                    </span>
+                    </td>
+                    <td>
+                    <span class="form-sub-label-container" style="vertical-align: top">
+                      <select class="form-dropdown form-address-country" defaultcountry="United States" name="form[address][country]" id="input_4_country">
+                        <option value=""> Please Select </option>
+                        <option value="United States" selected> United States </option>
+                      </select>
+                      <label class="form-sub-label" for="input_4_country" id="sublabel_4_country" style="min-height: 13px;"> Country </label>
+                    </span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </li>
+            <li class="form-line">
+              <label class="form-label">
+                Phone Number<strong>*</strong>
+                <div id="cid_5" class="form-phone form-input-wide jf-required row">
+                  <span class="form-sub-label-container small-12 columns" style="vertical-align: top">
+                    <input required class="form-textbox" type="text" pattern="phone" name="form[phoneNumber]" id="input_5_phone" size="8">
+                  </span>
+                </div>
+                <span class="form-error">Phone Number is required.</span>
+              </label>
+
+            </li>
+            <li class="form-line">
+              <label class="form-label">
+                E-mail<strong>*</strong>
+                <input type="text" class="email-form" pattern="email" placeholder="email@example.com" name="form[email]" required="" >
+                <span class="form-error">Email is required.</span>
+              </label>
+            </li>
+            <li class="form-line">
+              <label class="form-label form-label-top" id="label_8" for="input_8"> We will bring a door prize </label>
+              <div id="cid_8" class="form-input-wide jf-required">
+                <div class="form-single-column">
+                <span class="form-radio-item" style="clear:left;">
+                  <span class="dragger-item">
+                  </span>
+                  <input type="radio" class="form-radio" id="input_8_0" name="form[doorPrize]" value="Yes" />
+                  <label id="label_input_8_0" for="input_8_0"> Yes </label>
+                </span>
+                <span class="form-radio-item" style="clear:left;">
+                  <span class="dragger-item">
+                  </span>
+                  <input type="radio" class="form-radio" id="input_8_1" name="form[doorPrize]" value="No" />
+                  <label id="label_input_8_1" for="input_8_1"> No </label>
+                </span>
+                </div>
+              </div>
+            </li>
+            <li class="form-line" data-type="control_button" id="id_2">
+              <div id="cid_2" class="form-input-wide">
+                <div style="margin-left:156px" class="form-buttons-wrapper">
+                  <button id="input_2" type="submit" class="button form-submit-button">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </li>
+            <li style="display:none">
+              Should be Empty:
+              <input type="text" name="website" value="" />
+            </li>
+          </ul>
+        </div>
+        <input type="hidden" id="simple_spc" name="simple_spc" value="60675118868164" />
+        <script type="text/javascript">
+          document.getElementById("si" + "mple" + "_spc").value = "60675118868164-60675118868164";
+        </script>
+      </form>
+    </div>
+  </div>
+
+  <div class="row align-center">
+    <div class="small-12 columns stripe-form" id="gold">
+      <form action="/gold" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
+          data-name="HCS Legacy Project"
+          data-description="Gold Sponsorship"
+          data-amount="150000"
+          data-label="Gold Sponsorship ($1500)"
+          data-locale="auto">
+        </script>
+      </form>
+    </div>
+    <div class="small-12 columns stripe-form" id="silver">
+      <form action="/silver" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
+          data-name="HCS Legacy Project"
+          data-description="Silver Sponsorship"
+          data-amount="75000"
+          data-label="Silver Sponsorship ($750)"
+          data-locale="auto">
+        </script>
+      </form>
+    </div>
+    <div class="small-12 columns stripe-form" id="bronze">
+      <form action="/bronze" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
+          data-name="HCS Legacy Project"
+          data-description="Bronze Sponsorship"
+          data-amount="35000"
+          data-label="Bronze Sponsorship ($350)"
+          data-locale="auto">
+        </script>
+      </form>
+    </div>
+    <div class="small-12 columns stripe-form" id="business">
+      <form action="/business" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
+          data-name="HCS Legacy Project"
+          data-description="Business Booth"
+          data-amount="15000"
+          data-label="Business Booth ($150)"
+          data-locale="auto">
+        </script>
+      </form>
+    </div>
+    <div class="small-12 columns stripe-form" id="personal">
+      <form action="/personal" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
+          data-name="HCS Legacy Project"
+          data-description="Personal Booth"
+          data-amount="2500"
+          data-label="Personal Booth ($25)"
+          data-locale="auto">
+        </script>
+      </form>
+    </div>
+  </div>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

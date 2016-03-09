@@ -1,0 +1,13 @@
+h3 HCS Legacy Form Submission
+ul
+  li Name: #{formData.contact.first} #{formData.contact.last}
+  li Email: #{formData.email}
+  li Phone: #{formData.phoneNumber}
+  li Sponsorhip: #{formData.sponsorship}
+  li Organization: #{formData.organization}
+  li Door Prize: #{formData.doorPrize}
+  li Address:
+    p(style='white-space:pre;')
+      | #{formData.address.addr_line1}
+      | #{formData.address.addr_line2}
+      | #{formData.address.city}, #{formData.address.state} #{formData.address.postal}
