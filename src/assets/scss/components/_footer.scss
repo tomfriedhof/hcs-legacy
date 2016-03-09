@@ -3,4 +3,14 @@
 .footer-information {
   padding: rem-calc(50 0);
   background-color: $light-gray;
+
+  img {
+    max-width: rem-calc(130);
+  }
+
+  .sponsored-by {
+    p {
+      margin: 0;
+    }
+  }
 }

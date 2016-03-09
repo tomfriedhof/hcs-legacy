@@ -1,5 +1,7 @@
 $(document).foundation();
 Foundation.Abide.defaults.patterns['price'] = /^\$?(?!0\d)(?:\d+|\d{1,3}(?:,\d{1,3})*)(?:\.\d{2})?$/;
+$('input.cc-num').payment('formatCardNumber');
+$('input.cc-cvc').payment('formatCardCVC');
 
 var hcs = (function(window, $) {
 
@@ -79,7 +81,22 @@ var hcs = (function(window, $) {
   function interceptForm() {
     $('#payment-form').submit(function(event) {
       var $form = $(this);
+      var validCard = $.payment.validateCardNumber($('input.cc-num').val());
+      var validCVC = $.payment.validateCardCVC($('input.cc-cvc').val());
+      var validExpire = $.payment.validateCardExpiry($('input.cc-ex-m').val(), $('input.cc-ex-y').val());
 
+      if (!validCard) {
+        alert('Your card is not valid!');
+        return false;
+      }
+      else if (!validCVC) {
+        alert('Your CVC is not valid!');
+        return false;
+      }
+      else if (!validExpire) {
+        alert('Your card expire date is not valid!');
+        return false;
+      }
       // Disable the submit button to prevent repeated clicks
       $form.find('button').prop('disabled', true);
 

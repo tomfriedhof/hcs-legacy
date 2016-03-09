@@ -154,27 +154,32 @@
         <div class="form-row">
           <label>
             <span>Card Number</span>
-            <input type="text" size="20" data-stripe="number"/>
+            <input class="cc-num" type="text" size="20" data-stripe="number"/>
           </label>
         </div>
 
-        <div class="form-row">
-          <label>
-            <span>CVC</span>
-            <input type="text" size="4" data-stripe="cvc"/>
-          </label>
-        </div>
-
-        <div class="form-row">
-          <span>Expiration (MM/YYYY)</span>
-          <div class="row">
-            <div class="small-6 columns">
+        <div class="row">
+          <div class="small-12 medium-6 columns">
+            <div class="form-row">
               <label>
-                <input type="text" size="2" data-stripe="exp-month"/><span> / </span>
+                <span>CVC</span>
+                <input class="cc-cvc" type="text" size="4" data-stripe="cvc"/>
               </label>
             </div>
-            <div class="small-6 columns">
-              <input type="text" size="4" data-stripe="exp-year"/>
+          </div>
+          <div class="small-12 medium-6 columns">
+            <div class="form-row">
+              <span>Expiration (MM/YYYY)</span>
+              <div class="row">
+                <div class="small-6 columns">
+                  <label>
+                    <input class="cc-ex-m" type="text" size="2" data-stripe="exp-month"/><span> / </span>
+                  </label>
+                </div>
+                <div class="small-6 columns">
+                  <input class="cc-ex-y" type="text" size="4" data-stripe="exp-year"/>
+                </div>
+              </div>
             </div>
           </div>
         </div>
