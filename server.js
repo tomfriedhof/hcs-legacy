@@ -6,12 +6,13 @@ var app = express();
 var bodyParser = require('body-parser');
 var aws = require('aws-sdk');
 var stripe = require("stripe")(process.env.STRIPE_SECRET);
-
+var favicon = require('serve-favicon');
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
 app.use(bodyParser());
+app.use(favicon(__dirname + '/dist/assets/favicon.ico'));
 //app.use(expressValidator([])); // this line must be immediately after express.bodyParser()!
 //app.use(express.static(__dirname + '/dist'));
 
