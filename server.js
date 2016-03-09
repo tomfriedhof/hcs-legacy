@@ -82,6 +82,8 @@ app.get('/.well-known/acme-challenge/EOknB6K3ku_L3P_fqm-kn7lO5fqWO5R5I13Tn3c0tGc
 
 app.use(express.static(__dirname + '/dist'));
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+var port = process.env.PORT || 3000;
+
+app.listen(port, function () {
+  console.log('Example app listening on port ' + port + '!');
 });
