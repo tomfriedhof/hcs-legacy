@@ -29,7 +29,7 @@
   @include breakpoint(large up) {
     background-size: cover;
     height: 85vh;
-    min-height: rem-calc(660);
+    min-height: rem-calc(750);
     padding: 0;
     position: relative;
   }
@@ -47,6 +47,7 @@
       font-size: rem-calc(50);
     }
   }
+
 
   h4 {
     color: $quaternary-color;
@@ -83,7 +84,7 @@
   width: 80%;
 
   @include breakpoint(large up) {
-    bottom: -30%;
+    bottom: -10%;
   }
 }
 
