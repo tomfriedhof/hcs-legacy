@@ -76,7 +76,7 @@ app.post('/:plan', function(req, res) {
   }
 });
 
-app.get('/.well-known/acme-challenge/EOknB6K3ku_L3P_fqm-kn7lO5fqWO5R5I13Tn3c0tGc', function (req, res) {
+app.get('/.well-known/acme-challenge/' + process.env.LETSENCRYPT_PUBLIC_PROOF, function (req, res) {
   res.end(process.env.LETSENCRYPT_PROOF);
 });
 
