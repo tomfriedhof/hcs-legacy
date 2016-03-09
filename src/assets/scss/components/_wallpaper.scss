@@ -28,7 +28,8 @@
 
   @include breakpoint(large up) {
     background-size: cover;
-    min-height: 85vh;
+    height: 85vh;
+    min-height: rem-calc(500);
     padding: 0;
     position: relative;
   }
@@ -114,5 +115,19 @@
     @include breakpoint(large up) {
       border-right: 1px solid $white;
     }
+  }
+}
+
+
+.reveal.large {
+  height: 100vh;
+  width: 100%;
+  max-width: 95%;
+  max-height: 100vh !important;
+  margin-top: 0;
+  top: 0 !important;
+
+  .flex-video.widescreen {
+    margin: 0;
   }
 }

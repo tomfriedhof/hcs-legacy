@@ -3,12 +3,33 @@ Foundation.Abide.defaults.patterns['price'] = /^\$?(?!0\d)(?:\d+|\d{1,3}(?:,\d{1
 
 var hcs = (function(window, $) {
 
-  function showSponsorLevel(elem, showElem) {
-    $(elem).change(function() {
-      var selected = $(this).val();
-      $(showElem).hide();
-      $('#' + selected).toggle();
-    });
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1);
+      if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return false;
+  }
+
+  function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+  }
+
+  function checkCookie(cname, player) {
+    var cookie = getCookie(cname);
+    if (!cookie) {
+      setTimeout(function() {
+        $('#videoModal').foundation('open');
+        player.playVideo();
+        setCookie('hcs_visited', 1, 14);
+      }, 200);
+    }
   }
 
   function showAmount(elem, showElem) {
@@ -36,23 +57,6 @@ var hcs = (function(window, $) {
       error: function (jXHR, textStatus, errorThrown) {
         console.log(errorThrown);
       }
-    });
-  }
-
-  function stripeListen() {
-    $('.stripe-button-el').click(function() {
-      formSubmit('#contact-form');
-    });
-  }
-
-  function addDataEmail() {
-    var $email = $(".email-form");
-    $email.change(function() {
-      var email = $(this).val();
-
-      $('.reveal form script').each(function(elem) {
-        $(this).attr('data-email', email);
-      })
     });
   }
 
@@ -86,18 +90,21 @@ var hcs = (function(window, $) {
     });
   }
 
+  function closedModal() {
+    $('body').on('closed.zf.reveal', function() {
+      player.stopVideo();
+    });
+  }
+
   return {
-    showSponsorLevel: showSponsorLevel,
-    stripeListen: stripeListen,
-    addDataEmail: addDataEmail,
     interceptForm: interceptForm,
-    showAmount: showAmount
+    showAmount: showAmount,
+    checkCookie: checkCookie,
+    closedModal: closedModal
   };
 
 })( window, jQuery );
 
 hcs.interceptForm();
+hcs.closedModal();
 hcs.showAmount('.sponsorship-select', '.custom-amount');
-//hcs.addDataEmail();
-//hcs.showSponsorLevel('.sponsorship-select', '.stripe-form');
-//hcs.stripeListen();
