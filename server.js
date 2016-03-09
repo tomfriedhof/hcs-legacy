@@ -71,6 +71,10 @@ app.post('/form/submit', function(req, res) {
           res.send(reason);
         });
       }
+      else {
+        console.log("Charge");
+        console.log(charge);
+      }
     });
   }
   else {
