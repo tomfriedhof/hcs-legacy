@@ -3,7 +3,7 @@
   <p class="lead">Use the dropdown to select the appropriate sponsorship level. Clicking the button at the bottom will pop-up a screen to enter credit card information.</p>
   <div class="row align-center">
     <div class="small-12 medium-12 columns">
-      <form data-abide novalidate class="jotform-form" action="/form/submit" method="post" name="contactform" id="contact-form" accept-charset="utf-8">
+      <form data-abide novalidate class="jotform-form" action="/form/submit" method="post" name="contactform" id="payment-form" accept-charset="utf-8">
         <div data-abide-error class="alert callout" style="display: none;">
           <p><i class="fi-alert"></i> There are some errors in your form.</p>
         </div>
@@ -17,7 +17,18 @@
                 <option value="bronze">Bronze Sponsorship ($350)</option>
                 <option value="business">Business booth ($150)</option>
                 <option value="personal">Personal booth ($25)</option>
+                <option value="custom">Custom Amount</option>
               </select>
+              <div class="custom-amount">
+                <label>
+                  Amount
+                  <div class="input-group">
+                    <span class="input-group-label">$</span>
+                    <input type="text" name="form[customAmount]" pattern="price" aria-describedby="amountHelp">
+                  </div>
+                </label>
+                <p class="help-text" id="amountHelp">Enter the dollar amount (ex: 100.00).</p>
+              </div>
             </li>
             <li class="form-line">
               <label class="form-label">
@@ -133,93 +144,46 @@
                 </div>
               </div>
             </li>
-            <li class="form-line" data-type="control_button" id="id_2">
-              <div id="cid_2" class="form-input-wide">
-                <div style="margin-left:156px" class="form-buttons-wrapper">
-                  <button id="input_2" type="submit" class="button form-submit-button">
-                    Submit
-                  </button>
-                </div>
-              </div>
-            </li>
             <li style="display:none">
               Should be Empty:
               <input type="text" name="website" value="" />
             </li>
           </ul>
         </div>
-        <input type="hidden" id="simple_spc" name="simple_spc" value="60675118868164" />
-        <script type="text/javascript">
-          document.getElementById("si" + "mple" + "_spc").value = "60675118868164-60675118868164";
-        </script>
-      </form>
-    </div>
-  </div>
 
-  <div class="row align-center">
-    <div class="small-12 columns stripe-form" id="gold">
-      <form action="/gold" method="POST">
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
-          data-name="HCS Legacy Project"
-          data-description="Gold Sponsorship"
-          data-amount="150000"
-          data-label="Gold Sponsorship ($1500)"
-          data-locale="auto">
-        </script>
-      </form>
-    </div>
-    <div class="small-12 columns stripe-form" id="silver">
-      <form action="/silver" method="POST">
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
-          data-name="HCS Legacy Project"
-          data-description="Silver Sponsorship"
-          data-amount="75000"
-          data-label="Silver Sponsorship ($750)"
-          data-locale="auto">
-        </script>
-      </form>
-    </div>
-    <div class="small-12 columns stripe-form" id="bronze">
-      <form action="/bronze" method="POST">
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
-          data-name="HCS Legacy Project"
-          data-description="Bronze Sponsorship"
-          data-amount="35000"
-          data-label="Bronze Sponsorship ($350)"
-          data-locale="auto">
-        </script>
-      </form>
-    </div>
-    <div class="small-12 columns stripe-form" id="business">
-      <form action="/business" method="POST">
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
-          data-name="HCS Legacy Project"
-          data-description="Business Booth"
-          data-amount="15000"
-          data-label="Business Booth ($150)"
-          data-locale="auto">
-        </script>
-      </form>
-    </div>
-    <div class="small-12 columns stripe-form" id="personal">
-      <form action="/personal" method="POST">
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="pk_test_HuSakWepQjeE42l5ec280vgm"
-          data-name="HCS Legacy Project"
-          data-description="Personal Booth"
-          data-amount="2500"
-          data-label="Personal Booth ($25)"
-          data-locale="auto">
-        </script>
+        <div class="form-row">
+          <label>
+            <span>Card Number</span>
+            <input type="text" size="20" data-stripe="number"/>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>
+            <span>CVC</span>
+            <input type="text" size="4" data-stripe="cvc"/>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <span>Expiration (MM/YYYY)</span>
+          <div class="row">
+            <div class="small-6 columns">
+              <label>
+                <input type="text" size="2" data-stripe="exp-month"/><span> / </span>
+              </label>
+            </div>
+            <div class="small-6 columns">
+              <input type="text" size="4" data-stripe="exp-year"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-buttons-wrapper">
+          <button id="input_2" type="submit" class="button form-submit-button">
+            Submit sponsorship!
+          </button>
+        </div>
       </form>
     </div>
   </div>

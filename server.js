@@ -16,22 +16,13 @@ app.use(bodyParser());
 app.use(express.static(__dirname + '/dist'));
 
 // Form submission
-app.post('/form/submit', function(req, res) {
-  var send = require('./common/sendEmailViaSES');
-  var form = req.body.form;
-
-  //req.checkBody('form[email]', 'Email address is required').notEmpty().isString();
-
-  //var errors = req.validationErrors();
-
-
-    send(form.email, 'HCS Legacy Project', form).then(function (response) {
-      res.send(response);
-    }, function (reason) {
-      res.send(reason);
-    });
-
-});
+var pricing = {
+  gold: '150000',
+  silver: '75000',
+  bronze: '35000',
+  business: '15000',
+  personal: '2500'
+};
 
 /**
  * Sends the charge to Stripe
@@ -55,13 +46,35 @@ var sendCharge = function(amount, stripeToken, callback) {
   });
 };
 
-var pricing = {
-  gold: '150000',
-  silver: '75000',
-  bronze: '35000',
-  business: '15000',
-  personal: '2500'
-};
+app.post('/form/submit', function(req, res) {
+  var form = req.body.form;
+  var stripeToken = form.stripeToken;
+  var amount = false;
+  if (typeof pricing[form.sponsorship] !== 'undefined') {
+    amount = pricing[form.sponsorship];
+  }
+  else if (form.customAmount) {
+    amount = form.customAmount * 100;
+  }
+
+  if (amount) {
+    sendCharge(amount, stripeToken, function (charge) {
+      if (charge) {
+        var send = require('./common/sendEmailViaSES');
+        var form = req.body.form;
+
+        send(form.email, 'HCS Legacy Project', form).then(function (response) {
+          res.redirect('/success');
+        }, function (reason) {
+          res.send(reason);
+        });
+      }
+    });
+  }
+
+});
+
+
 
 // Post purchase
 app.post('/:plan', function(req, res) {
