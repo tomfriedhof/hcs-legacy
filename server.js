@@ -61,6 +61,8 @@ app.post('/form/submit', function(req, res) {
   console.log(amount);
   if (amount) {
     sendCharge(amount, stripeToken, function (charge) {
+      console.log("ARGS");
+      console.log(arguments);
       if (charge) {
         var send = require('./common/sendEmailViaSES');
         var form = req.body.form;
