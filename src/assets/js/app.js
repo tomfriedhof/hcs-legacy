@@ -79,32 +79,61 @@ var hcs = (function(window, $) {
   }
 
   function interceptForm() {
-    $('#payment-form').submit(function(event) {
-      var $form = $(this);
-      var validCard = $.payment.validateCardNumber($('input.cc-num').val());
-      var validCVC = $.payment.validateCardCVC($('input.cc-cvc').val());
-      var validExpire = $.payment.validateCardExpiry($('input.cc-ex-m').val(), $('input.cc-ex-y').val());
+    $("#payment-form").validate({
+      rules: {
+        form: {
+          sponsorship: {
+            required: true
+          },
+          contact: {
+            first: {
+              required: true
+            },
+            last: {
+              required: true
+            }
+          },
+          email: {
+            required: true
+          },
+          phoneNumber: {
+            required: true
+          }
+        }
+      },
+      submitHandler: function(form) {
+        var $form = $(form);
+        var validCard = $.payment.validateCardNumber($('input.cc-num').val());
+        var validCVC = $.payment.validateCardCVC($('input.cc-cvc').val());
+        var validExpire = $.payment.validateCardExpiry($('input.cc-ex-m').val(), $('input.cc-ex-y').val());
 
-      if (!validCard) {
-        alert('Your card is not valid!');
+        if (!validCard) {
+          alert('Your card is not valid!');
+          return false;
+        }
+        else if (!validCVC) {
+          alert('Your CVC is not valid!');
+          return false;
+        }
+        else if (!validExpire) {
+          alert('Your card expire date is not valid!');
+          return false;
+        }
+
+
+
+        // Disable the submit button to prevent repeated clicks
+        $form.find('button').prop('disabled', true);
+
+        Stripe.card.createToken($form, stripeResponseHandler);
+
+        // Prevent the form from submitting with the default action
         return false;
       }
-      else if (!validCVC) {
-        alert('Your CVC is not valid!');
-        return false;
-      }
-      else if (!validExpire) {
-        alert('Your card expire date is not valid!');
-        return false;
-      }
-      // Disable the submit button to prevent repeated clicks
-      $form.find('button').prop('disabled', true);
-
-      Stripe.card.createToken($form, stripeResponseHandler);
-
-      // Prevent the form from submitting with the default action
-      return false;
     });
+
+    //$('#payment-form').submit(function(event) {
+    //});
   }
 
   function closedModal() {

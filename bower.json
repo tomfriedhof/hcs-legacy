@@ -18,7 +18,8 @@
     "foundation-sites": "~6.0.0",
     "fontawesome": "~4.5.0",
     "motion-ui": "~1.1.0",
-    "vide": "~0.5.0"
+    "vide": "~0.5.0",
+    "jquery-validation": "~1.15.0"
   },
   "private": true
 }

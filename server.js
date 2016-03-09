@@ -57,7 +57,8 @@ app.post('/form/submit', function(req, res) {
   else if (form.customAmount) {
     amount = form.customAmount * 100;
   }
-
+  console.log("AMOUNT");
+  console.log(amount);
   if (amount) {
     sendCharge(amount, stripeToken, function (charge) {
       if (charge) {
@@ -71,6 +72,10 @@ app.post('/form/submit', function(req, res) {
         });
       }
     });
+  }
+  else {
+    console.log("No amount");
+    res.send("No amount");
   }
 
 });

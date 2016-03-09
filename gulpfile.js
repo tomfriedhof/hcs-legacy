@@ -35,6 +35,7 @@ var PATHS = {
     'bower_components/jquery/dist/jquery.js',
     'bower_components/what-input/what-input.js',
     'bower_components/vide/dist/jquery.vide.js',
+    'bower_components/jquery-validation/dist/jquery.validate.js',
     'bower_components/foundation-sites/js/foundation.core.js',
     'bower_components/foundation-sites/js/foundation.util.*.js',
     'node_modules/jquery.payment/lib/jquery.payment.js',
