@@ -49,6 +49,7 @@
     "dotenv": "^2.0.0",
     "express": "^4.13.4",
     "express-validator": "^2.19.1",
+    "gulp-replace": "^0.5.4",
     "jade": "^1.11.0",
     "stripe": "^4.4.0"
   }

@@ -8,9 +8,11 @@ var sequence = require('run-sequence');
 var sherpa   = require('style-sherpa');
 var clean    = require('gulp-clean');
 var nodemon  = require('gulp-nodemon');
+var replace = require('gulp-replace');
 
 // Check for --production flag
 var isProduction = !!(argv.production);
+var stripeKey = !!(argv.stripeKey) ? argv.stripeKey : "pk_test_HuSakWepQjeE42l5ec280vgm";
 
 // Port to use for the development server.
 var PORT = 8000;
@@ -83,6 +85,7 @@ gulp.task('pages', function() {
       data: 'src/data/',
       helpers: 'src/helpers/'
     }))
+    .pipe(replace('__STRIPEKEY__', stripeKey))
     .pipe(gulp.dest('dist'));
 });
 
