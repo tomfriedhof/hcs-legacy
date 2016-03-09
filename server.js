@@ -38,6 +38,9 @@ var sendCharge = function(amount, stripeToken, callback) {
     source: stripeToken,
     description: "HCS Legacy charge"
   }, function(err, charge) {
+    console.log("HERE");
+    console.log(err);
+    console.log(charge);
     if (err && err.type === 'StripeCardError') {
       callback(false);
     }
@@ -61,8 +64,6 @@ app.post('/form/submit', function(req, res) {
   console.log(amount);
   if (amount) {
     sendCharge(amount, stripeToken, function (charge) {
-      console.log("ARGS");
-      console.log(arguments);
       if (charge) {
         var send = require('./common/sendEmailViaSES');
         var form = req.body.form;
