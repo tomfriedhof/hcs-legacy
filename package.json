@@ -52,26 +52,5 @@
     "stripe": "^4.4.0",
     "style-sherpa": "^1.0.0",
     "yargs": "^3.8.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zurb/foundation-zurb-template.git"
-  },
-  "bugs": {
-    "url": "https://github.com/zurb/foundation-sites/issues",
-    "email": "foundation@zurb.com"
-  },
-  "private": true,
-  "dependencies": {
-    "aws-sdk": "^2.2.41",
-    "bluebird": "^3.3.4",
-    "body-parser": "^1.15.0",
-    "confidence": "^1.4.2",
-    "dotenv": "^2.0.0",
-    "express": "^4.13.4",
-    "express-validator": "^2.19.1",
-    "gulp-replace": "^0.5.4",
-    "jade": "^1.11.0",
-    "stripe": "^4.4.0"
   }
 }
