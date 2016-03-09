@@ -53,6 +53,12 @@
     justify-content: center;
     margin: rem-calc(10 0);
   }
+
+  .empty {
+    border: 2px dashed;
+    border-radius: rem-calc(10);
+    padding: 0 20px;
+  }
 }
 
 .gold {
@@ -81,6 +87,10 @@
   img {
     max-width: rem-calc(100);
   }
+
+  .empty {
+    height: rem-calc(150);
+  }
 }
 
 .bronze {
@@ -100,5 +110,9 @@
 
   img {
     max-width: rem-calc(80);
+  }
+
+  .empty {
+    height: rem-calc(80);
   }
 }
