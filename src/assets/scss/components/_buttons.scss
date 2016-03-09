@@ -13,9 +13,14 @@
 }
 
 .button {
+
   &.tertiary {
     background-color: $tertiary-color;
     color: $primary-color;
+
+    &:hover {
+      background-color: lighten($tertiary-color, 10%);
+    }
   }
 
   &.quaternary {
