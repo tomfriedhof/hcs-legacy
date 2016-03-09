@@ -76,6 +76,11 @@ gulp.task('copy', function() {
     .pipe(gulp.dest('dist/assets'));
 });
 
+gulp.task('copy:fontawesome', function() {
+  gulp.src('bower_components/fontawesome/fonts/*')
+    .pipe(gulp.dest('dist/assets/fonts'));
+});
+
 // Copy page templates into finished HTML files
 gulp.task('pages', function() {
   gulp.src('src/pages/**/*.{html,hbs,handlebars}')
@@ -161,7 +166,7 @@ gulp.task('images', function() {
 
 // Build the "dist" folder by running all of the above tasks
 gulp.task('build', function(done) {
-  sequence('clean', ['pages', 'sass', 'javascript', 'images', 'copy'], 'styleguide', done);
+  sequence('clean', ['pages', 'sass', 'javascript', 'images', 'copy', 'copy:fontawesome'], 'styleguide', done);
 });
 
 // Start a server with LiveReload to preview the site in
