@@ -45,23 +45,7 @@ var hcs = (function(window, $) {
       }
     });
   }
-
-  function formSubmit(form) {
-    var $form = $(form);
-
-    $.ajax({
-      url : $form.attr('action') || window.location.pathname,
-      type: "POST",
-      data: $form.serialize(),
-      success: function (data) {
-        $form.html(data);
-      },
-      error: function (jXHR, textStatus, errorThrown) {
-        console.log(errorThrown);
-      }
-    });
-  }
-
+  
   function stripeResponseHandler(status, response) {
     var $form = $('#payment-form');
 
@@ -142,15 +126,43 @@ var hcs = (function(window, $) {
     });
   }
 
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  function showMessage() {
+    var error = getParameterByName('error');
+    var message = getParameterByName('success');
+    var addClass = 'success';
+    if (error || message) {
+      if (error) {
+        addClass = 'alert';
+        message = error;
+      }
+      var tag = document.createElement('div');
+      tag.innerHTML = "<div data-closable class='callout " + addClass + "'><h5>" + message + "</h5><button class='close-button' aria-label='Dismiss alert' type='button' data-close><span aria-hidden='true'>&times;</span></button></div>";
+      var addTo = $('#callout-placeholder');
+      addTo.append(tag);
+    }
+  }
+
   return {
     interceptForm: interceptForm,
     showAmount: showAmount,
     checkCookie: checkCookie,
-    closedModal: closedModal
+    closedModal: closedModal,
+    showMessage: showMessage
   };
 
 })( window, jQuery );
 
+hcs.showMessage();
 hcs.interceptForm();
 hcs.closedModal();
 hcs.showAmount('.sponsorship-select', '.custom-amount');

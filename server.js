@@ -38,14 +38,11 @@ var sendCharge = function(amount, stripeToken, callback) {
     source: stripeToken,
     description: "HCS Legacy charge"
   }, function(err, charge) {
-    console.log("HERE");
-    console.log(err);
-    console.log(charge);
     if (err && err.type === 'StripeCardError') {
-      callback(false);
+      callback(false, err);
     }
     else {
-      callback(charge);
+      callback(charge, false);
     }
   });
 };
@@ -60,29 +57,26 @@ app.post('/form/submit', function(req, res) {
   else if (form.customAmount) {
     amount = form.customAmount * 100;
   }
-  console.log("AMOUNT");
-  console.log(amount);
+
   if (amount) {
-    sendCharge(amount, stripeToken, function (charge) {
+    sendCharge(amount, stripeToken, function (charge, err) {
       if (charge) {
         var send = require('./common/sendEmailViaSES');
         var form = req.body.form;
 
         send(form.email, 'HCS Legacy Project', form).then(function (response) {
-          res.redirect('/success');
+          res.redirect('/?success=Success! Thank you for supporting!');
         }, function (reason) {
-          res.send(reason);
+          res.redirect('/?error=' + reason);
         });
       }
       else {
-        console.log("Charge");
-        console.log(charge);
+        res.redirect('/?error=' + err.message);
       }
     });
   }
   else {
-    console.log("No amount");
-    res.send("No amount");
+    res.redirect('/?error=No Amount');
   }
 
 });
