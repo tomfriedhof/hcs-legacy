@@ -4,9 +4,11 @@ ul
   li Email: #{formData.email}
   li Phone: #{formData.phoneNumber}
   li Sponsorhip: #{formData.sponsorship}
+  li Custom Amount: $#{formData.customAmount}
   li Organization: #{formData.organization}
   li Door Prize: #{formData.doorPrize}
   li Address:
+  if formData.address
     p(style='white-space:pre;')
       | #{formData.address.addr_line1}
       | #{formData.address.addr_line2}

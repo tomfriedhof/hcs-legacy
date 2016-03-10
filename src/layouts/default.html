@@ -6,6 +6,15 @@
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="6th Grade HCS Legacy Project" />
+    <meta property="og:description" content="Hesperia Christian School is proud to present the Health and Wellness Expo!  With over 200 people set to attend, this is the perfect event to promote and learn about the benefits of healthy living.  All proceeds for the event will go towards funding the HCS Legacy Project. Don’t miss the opportunity to become a sponsor and/or reserve a booth!" />
+    <meta property="og:image" content="https://www.hcslegacy.org/assets/img/og-share-image.jpg" />
+    <meta property="og:url" content="https://www.hcslegacy.org" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="6th Grade HCS Legacy Project" />
+    <meta property="twitter:url" content="https://www.hcslegacy.org" />
+    <meta property="twitter:image" content="https://www.hcslegacy.org/assets/img/og-share-image.jpg" />
+    <meta property="twitter:description" content="Hesperia Christian School is proud to present the Health and Wellness Expo!  With over 200 people set to attend, this is the perfect event to promote and learn about the benefits of healthy living.  All proceeds for the event will go towards funding the HCS Legacy Project. Don’t miss the opportunity to become a sponsor and/or reserve a booth!" />
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{{root}}assets/css/app.css">
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
@@ -18,13 +27,15 @@
     <div id="callout-placeholder"></div>
     <div class="top-bar">
       <div class="top-bar-title">
-        <!--<span data-responsive-toggle="responsive-menu" data-hide-for="medium">-->
-          <!--<span class="menu-icon dark" data-toggle></span>-->
-        <!--</span>-->
-        <span class="hide-for-small-only">Hesperia</span>
-        <img class="main-logo" src="{{root}}assets/img/health-and-wellness.svg" title="HCS Health and Wellness Expo"/>
-        <span class="hide-for-small-only">Christian</span>
-        <span class="small-logo-text show-for-small-only">Hesperia Christian</span>
+        <div class="row">
+          <div class="small-12 medium-5 columns logo-img">
+            <img class="main-logo" src="{{root}}assets/img/health-and-wellness.svg" title="HCS Health and Wellness Expo"/>
+          </div>
+          <div class="small-12 medium-6 columns logo-text">
+            presented by the
+            <span>HCS Legacy Project</span>
+          </div>
+        </div>
       </div>
       <div id="responsive-menu">
         <div class="top-bar-left">
@@ -61,7 +72,7 @@
       </button>
     </div>
     {{> modal-form }}
-
+    {{> donate-form }}
     <script>
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');

@@ -7,9 +7,9 @@ AWS.config.update(AppConfig.get('/aws/config'));
 var SES       = new AWS.SES();
 Promise.promisifyAll(SES);
 
-module.exports = function(email, subject, message) {
-  var to  = ['evan@activelamp.com'];
-  var frm = 'hcs@activelamp.com';
+module.exports = function(subject, message) {
+  var to  = ['hcs@activelamp.com'];
+  var frm = 'noreply@activelamp.com';
   var body = jade.renderFile("views/email.jade", {formData: message});
 
   return SES.sendEmailAsync({

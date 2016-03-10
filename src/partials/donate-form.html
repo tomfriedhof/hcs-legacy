@@ -1,0 +1,103 @@
+<div class="reveal" id="donateModal" data-reveal>
+  <h4>Fill out the form below to make a donation</h4>
+  <p class="lead">Thank you for your interest in donating!</p>
+  <div class="row align-center">
+    <div class="small-12 medium-12 columns">
+      <form data-abide novalidate class="jotform-form" action="/form/submit" method="post" name="contactform" id="donate-form" accept-charset="utf-8">
+        <div data-abide-error class="alert callout" style="display: none;">
+          <p><i class="fi-alert"></i> There are some errors in your form.</p>
+        </div>
+        <div class="form-all">
+          <ul class="form-section page-section">
+            <li>
+              <label>
+                Amount
+                <div class="input-group">
+                  <span class="input-group-label">$</span>
+                  <input type="text" name="form[customAmount]" pattern="price" aria-describedby="amountHelp">
+                </div>
+              </label>
+              <p class="help-text" id="amountHelp">Enter the dollar amount (ex: 100.00).</p>
+            </li>
+            <li class="form-line">
+              <label class="form-label">
+                Contact Person<strong>*</strong>
+                <div id="cid_1" class="row form-name form-input-wide jf-required">
+                  <span class="form-sub-label-container small-12 medium-6 columns" style="vertical-align: top">
+                    <input required class="form-textbox" type="text" size="10" name="form[contact][first]" id="first_1" />
+                    <label class="form-sub-label" for="first_1" id="sublabel_first" style="min-height: 13px;"> First Name </label>
+                  </span>
+                  <span class="form-sub-label-container small-12 medium-6 columns" style="vertical-align: top">
+                    <input required class="form-textbox" type="text" size="15" name="form[contact][last]" id="last_1" />
+                    <label class="form-sub-label" for="last_1" id="sublabel_last" style="min-height: 13px;"> Last Name </label>
+                  </span>
+                </div>
+                <span class="form-error">First and Last required.</span>
+              </label>
+            </li>
+            <li class="form-line">
+              <label class="form-label">
+                Phone Number
+                <div id="cid_5" class="form-phone form-input-wide jf-required row">
+                  <span class="form-sub-label-container small-12 columns" style="vertical-align: top">
+                    <input class="form-textbox" type="text" pattern="phone" name="form[phoneNumber]" id="input_5_phone" size="8">
+                  </span>
+                </div>
+              </label>
+            </li>
+            <li class="form-line">
+              <label class="form-label">
+                E-mail<strong>*</strong>
+                <input type="text" class="email-form" pattern="email" placeholder="email@example.com" name="form[email]" required="" >
+                <span class="form-error">Email is required.</span>
+              </label>
+              <p class="help-text">Used to send a receipt of donation.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="form-row">
+          <label>
+            <span>Card Number</span>
+            <input class="cc-num" type="text" size="20" data-stripe="number"/>
+          </label>
+        </div>
+
+        <div class="row">
+          <div class="small-12 medium-6 columns">
+            <div class="form-row">
+              <label>
+                <span>CVC</span>
+                <input class="cc-cvc" type="text" size="4" data-stripe="cvc"/>
+              </label>
+            </div>
+          </div>
+          <div class="small-12 medium-6 columns">
+            <div class="form-row">
+              <span>Expiration (MM/YYYY)</span>
+              <div class="row">
+                <div class="small-6 columns">
+                  <label>
+                    <input class="cc-ex-m" type="text" size="2" data-stripe="exp-month"/><span> / </span>
+                  </label>
+                </div>
+                <div class="small-6 columns">
+                  <input class="cc-ex-y" type="text" size="4" data-stripe="exp-year"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-buttons-wrapper">
+          <button id="input_2" type="submit" class="button form-submit-button">
+            Submit donation
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>

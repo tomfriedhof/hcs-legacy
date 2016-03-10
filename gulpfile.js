@@ -12,7 +12,7 @@ var replace = require('gulp-replace');
 
 // Check for --production flag
 var isProduction = !!(argv.production);
-var stripeKey = !!(argv.stripeKey) ? argv.stripeKey : "pk_test_HuSakWepQjeE42l5ec280vgm";
+var stripeKey = !!(argv.stripeKey) ? argv.stripeKey : "pk_test_OyDownohrX9n4b6t6UrQ4QqS";
 
 // Port to use for the development server.
 var PORT = 8000;

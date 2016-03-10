@@ -24,7 +24,7 @@
   text-align: center;
   overflow: hidden;
   position: relative;
-  padding: rem-calc(120 0 40 0);
+  padding: rem-calc(140 0 40 0);
 
   @include breakpoint(large up) {
     background-size: cover;
@@ -91,7 +91,6 @@
 .wallpaper--content {
   @include breakpoint(large up) {
     @include center();
-    padding-top: rem-calc(25);
     width: 75%;
   }
   z-index: 2;
@@ -112,7 +111,13 @@
 .wallpaper--content--info {
   margin-bottom: rem-calc(40);
 
-  > div:first-child {
+  &.row {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .business-info {
     @include breakpoint(large up) {
       border-right: 1px solid $white;
     }
@@ -121,12 +126,10 @@
 
 
 .reveal.large {
-  height: 100vh;
-  width: 100%;
+  width: 70%;
   max-width: 95%;
-  max-height: 100vh !important;
   margin-top: 0;
-  top: 0 !important;
+  top: 20 !important;
 
   .flex-video.widescreen {
     margin: 0;

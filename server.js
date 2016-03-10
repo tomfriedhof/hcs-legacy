@@ -31,12 +31,13 @@ var pricing = {
  * @param stripeToken
  * @param callback
  */
-var sendCharge = function(amount, stripeToken, callback) {
+var sendCharge = function(amount, email, stripeToken, callback) {
   var charge = stripe.charges.create({
     amount: amount,
     currency: 'usd',
     source: stripeToken,
-    description: "HCS Legacy charge"
+    description: "HCS Legacy charge",
+    receipt_email: email
   }, function(err, charge) {
     if (err && err.type === 'StripeCardError') {
       callback(false, err);
@@ -51,7 +52,7 @@ app.post('/form/submit', function(req, res) {
   var form = req.body.form;
   var stripeToken = form.stripeToken;
   var amount = false;
-  if (typeof pricing[form.sponsorship] !== 'undefined') {
+  if (form.sponsorship && typeof pricing[form.sponsorship] !== 'undefined') {
     amount = pricing[form.sponsorship];
   }
   else if (form.customAmount) {
@@ -59,15 +60,14 @@ app.post('/form/submit', function(req, res) {
   }
 
   if (amount) {
-    sendCharge(amount, stripeToken, function (charge, err) {
+    sendCharge(amount, form.email, stripeToken, function (charge, err) {
       if (charge) {
         var send = require('./common/sendEmailViaSES');
         var form = req.body.form;
-
-        send(form.email, 'HCS Legacy Project', form).then(function (response) {
+        send('HCS Legacy Project', form).then(function (response) {
           res.redirect('/?success=Success! Thank you for supporting!');
         }, function (reason) {
-          res.redirect('/?error=' + reason);
+          res.redirect('/?error=' + reason.message);
         });
       }
       else {

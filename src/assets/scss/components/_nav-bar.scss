@@ -4,17 +4,44 @@
 
 .top-bar-title {
   text-align: center;
+  color: $white;
+
+  span {
+    display: block;
+    font-family: 'chunkfiveroman';
+    text-transform: uppercase;
+    font-size: rem-calc(20);
+
+    @include breakpoint(medium up) {
+      font-size: rem-calc(30);
+    }
+
+    @include breakpoint(large up) {
+      font-size: rem-calc(40);
+    }
+  }
 }
 
+.logo-img {
+  text-align: center;
+  @include breakpoint(medium up) {
+    text-align: right;
+  }
+}
+
+.logo-text {
+  text-align: center;
+
+  @include breakpoint(medium up) {
+    padding-top: rem-calc(20);
+    text-align: left;
+  }
+}
 .small-logo-text {
   display: block;
 }
 
 .top-bar {
-  color: $quaternary-color;
-  font-weight: 400;
-  letter-spacing: rem-calc(10);
-  text-transform: uppercase;
   padding: 0;
   position: absolute;
   top: 0;

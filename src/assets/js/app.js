@@ -4,6 +4,7 @@ $('input.cc-num').payment('formatCardNumber');
 $('input.cc-cvc').payment('formatCardCVC');
 
 var hcs = (function(window, $) {
+  var globalForm;
 
   function getCookie(cname) {
     var name = cname + "=";
@@ -45,9 +46,9 @@ var hcs = (function(window, $) {
       }
     });
   }
-  
+
   function stripeResponseHandler(status, response) {
-    var $form = $('#payment-form');
+    var $form = globalForm;
 
     if (response.error) {
       $form.find('.payment-errors').text(response.error.message);
@@ -63,6 +64,31 @@ var hcs = (function(window, $) {
   }
 
   function interceptForm() {
+    $("#donate-form").validate({
+      rules: {
+        form: {
+          customAmount: {
+            required: true
+          },
+          contact: {
+            first: {
+              required: true
+            },
+            last: {
+              required: true
+            }
+          },
+          email: {
+            required: true,
+            email: true
+          }
+        }
+      },
+      submitHandler: function (form) {
+        checkValidCC(form);
+      }
+    });
+
     $("#payment-form").validate({
       rules: {
         form: {
@@ -78,46 +104,49 @@ var hcs = (function(window, $) {
             }
           },
           email: {
-            required: true
+            required: true,
+            email: true
           },
           phoneNumber: {
-            required: true
+            required: true,
+            phoneUS: true
           }
         }
       },
       submitHandler: function(form) {
-        var $form = $(form);
-        var validCard = $.payment.validateCardNumber($('input.cc-num').val());
-        var validCVC = $.payment.validateCardCVC($('input.cc-cvc').val());
-        var validExpire = $.payment.validateCardExpiry($('input.cc-ex-m').val(), $('input.cc-ex-y').val());
-
-        if (!validCard) {
-          alert('Your card is not valid!');
-          return false;
-        }
-        else if (!validCVC) {
-          alert('Your CVC is not valid!');
-          return false;
-        }
-        else if (!validExpire) {
-          alert('Your card expire date is not valid!');
-          return false;
-        }
-
-
-
-        // Disable the submit button to prevent repeated clicks
-        $form.find('button').prop('disabled', true);
-
-        Stripe.card.createToken($form, stripeResponseHandler);
-
-        // Prevent the form from submitting with the default action
-        return false;
+        checkValidCC(form);
       }
     });
+  }
 
-    //$('#payment-form').submit(function(event) {
-    //});
+  function checkValidCC(form) {
+    var $form = $(form);
+    var validCard = $.payment.validateCardNumber($form.find('input.cc-num').val());
+    var validCVC = $.payment.validateCardCVC($form.find('input.cc-cvc').val());
+    var validExpire = $.payment.validateCardExpiry($form.find('input.cc-ex-m').val(), $form.find('input.cc-ex-y').val());
+
+    if (!validCard) {
+      alert('Your card is not valid!');
+      return false;
+    }
+    else if (!validCVC) {
+      alert('Your CVC is not valid!');
+      return false;
+    }
+    else if (!validExpire) {
+      alert('Your card expire date is not valid!');
+      return false;
+    }
+
+
+
+    // Disable the submit button to prevent repeated clicks
+    $form.find('button').prop('disabled', true);
+    globalForm = $form;
+    Stripe.card.createToken($form, stripeResponseHandler);
+
+    // Prevent the form from submitting with the default action
+    return false;
   }
 
   function closedModal() {
@@ -157,7 +186,8 @@ var hcs = (function(window, $) {
     showAmount: showAmount,
     checkCookie: checkCookie,
     closedModal: closedModal,
-    showMessage: showMessage
+    showMessage: showMessage,
+    globalForm: globalForm
   };
 
 })( window, jQuery );
