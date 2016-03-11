@@ -2,14 +2,24 @@ require('dotenv').config();
 
 var express = require('express');
 //var expressValidator = require('express-validator');
-var app = express();
 var bodyParser = require('body-parser');
 var aws = require('aws-sdk');
 var stripe = require("stripe")(process.env.STRIPE_SECRET);
 var favicon = require('serve-favicon');
+var cookieParser = require('cookie-parser');
+var csrf = require('csurf');
 
+// setup route middlewares
+var csrfProtection = csrf({ cookie: true });
+var parseForm = bodyParser.urlencoded({ extended: false });
+
+var app = express();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+
+// parse cookies
+// we need this because "cookie" is true in csrfProtection
+app.use(cookieParser());
 
 app.use(bodyParser());
 app.use(favicon(__dirname + '/dist/assets/favicon.ico'));
@@ -105,6 +115,10 @@ app.get('/.well-known/acme-challenge/' + process.env.LETSENCRYPT_PUBLIC_PROOF_2,
 });
 
 app.use(express.static(__dirname + '/dist'));
+app.get('/', csrfProtection, function(req, res) {
+  // pass the csrfToken to the view
+  res.render('home', { csrfToken: req.csrfToken() });
+});
 
 var port = process.env.PORT || 3000;
 
