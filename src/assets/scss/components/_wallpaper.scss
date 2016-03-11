@@ -30,6 +30,7 @@
     background-size: cover;
     height: 85vh;
     min-height: rem-calc(800);
+    max-height: rem-calc(1200);
     padding: 0;
     position: relative;
   }
@@ -37,7 +38,7 @@
   h2, p {
     color: $white;
   }
-
+  
   h2 {
     font-family:'3Dumb', $header-font-family;
     font-weight: 800;
@@ -81,7 +82,9 @@
   bottom: rem-calc(-180);
   left: 10%;
   position: absolute;
+  max-width: rem-calc(1150);
   width: 80%;
+  @include center('x');
 
   @include breakpoint(large up) {
     bottom: -10%;
