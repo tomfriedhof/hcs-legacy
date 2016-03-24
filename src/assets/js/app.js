@@ -30,7 +30,7 @@ var hcs = (function(window, $) {
       setTimeout(function() {
         $('#videoModal').foundation('open');
         player.playVideo();
-        setCookie('hcs_visited', 1, 14);
+        setCookie('hcs_visited_1', 1, 14);
       }, 200);
     }
   }
