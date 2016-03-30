@@ -39,7 +39,8 @@ $therm-height: rem-calc(20);
 }
 
 .goal-1,
-.goal-2 {
+.goal-2,
+.goal-3 {
   left: 14%;
   top: 45%;
   padding: 0;
@@ -74,11 +75,14 @@ $therm-height: rem-calc(20);
 }
 
 .goal-2 {
-  left: 80%;
+  left: 50%;
 
   //@include breakpoint(large up) {
   //  left: 80%;
   //}
+}
+.goal-3 {
+  left: 90%;
 }
 
 .money-progress--col-2 {
