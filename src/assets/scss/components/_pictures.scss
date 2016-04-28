@@ -13,7 +13,10 @@
     li {
       width: 300px;
       height: 300px;
-      flex: 1 0 33%;
+      flex: 1 0 100%;
+      @include breakpoint(medium up) {
+        flex: 1 0 33%;
+      }
 
       img {
         width: 100%;
