@@ -1,0 +1,23 @@
+.picture-section {
+  padding-bottom: 50px;
+}
+.image-gallery {
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      width: 300px;
+      height: 300px;
+      flex: 1 0 33%;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
